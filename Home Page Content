@@ -1,0 +1,761 @@
+<style>
+/* ================================================
+   RESETS & GLOBAL
+   ================================================ */
+.dl-wrap *, .dl-wrap *::before, .dl-wrap *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.dl-wrap {
+  font-family: var(--font-body);
+}
+.mobile-break {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobile-break { display: block; }
+}
+  
+/* ================================================
+   HERO
+   ================================================ */
+#dl-hero {
+  background-color: #1a1a1a;
+  padding: 80px 48px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+.dl-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.dl-hero-content {
+  flex: 0 0 52%;
+  max-width: 52%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dl-hero-h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.1;
+  background: linear-gradient(160deg, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+}
+.dl-hero-subhead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #bbbbbb;
+  margin-bottom: 28px;
+}
+.dl-hero-result {
+  display: block;
+  color: #ffffff;
+  font-weight: 600;
+  -webkit-text-fill-color: #ffffff;
+  margin-top: 6px;
+}
+.dl-hero-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.dl-checks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+.dl-check-item {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dl-check-mark {
+  color: #2d6d36;
+  font-weight: 700;
+  font-size: 16px;
+}
+.dl-hero-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 32px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dl-hero-btn:hover { background: var(--color-primary-hover); }
+.dl-hero-placeholder {
+  flex: 1;
+  min-height: 380px;
+  border: 1px solid #333;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+/* Slider */
+.dl-slider-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.dl-slider-heading {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  color: #bbbbbb;
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.dl-slider-heading strong {
+  font-weight: 600;
+  color: #fff;
+}
+.dl-slider-outer {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.dl-slider-outer::before,
+.dl-slider-outer::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.dl-slider-outer::before {
+  left: 0;
+  background: linear-gradient(to right, #1a1a1a, transparent);
+}
+.dl-slider-outer::after {
+  right: 0;
+  background: linear-gradient(to left, #1a1a1a, transparent);
+}
+.dl-slider-track {
+  display: flex;
+  gap: 64px;
+  width: max-content;
+  animation: dl-scroll 30s linear infinite;
+}
+.dl-slider-track img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+@keyframes dl-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 767px) {
+  #dl-hero { padding: 60px 20px 60px; gap: 48px; }
+  .dl-hero-inner { flex-direction: column; }
+  .dl-hero-content { flex: none; max-width: 100%; align-items: center; text-align: center; }
+  .dl-hero-h1 { font-size: clamp(30px, 8vw, 40px); }
+  .dl-hero-checks { align-items: center; }
+  .dl-checks-row { justify-content: center; }
+  .dl-hero-btn { width: 100%; text-align: center; }
+  .dl-hero-placeholder { display: none; }
+  .dl-slider-outer { width: 100%; }
+}
+
+/* ================================================
+   SHARED SECTION STYLES
+   ================================================ */
+.dl-overline {
+  font-family: var(--font-overline);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.dl-section-headline {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(26px, 3.2vw, 42px);
+  line-height: 1.15;
+  background: linear-gradient(160deg, #1a1a1a 0%, #555 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 18px;
+}
+.dl-section-subhead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #8c8c8a;
+  margin-bottom: 52px;
+}
+.dl-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.dl-centered-header {
+  text-align: center;
+}
+.dl-centered-header .dl-section-subhead {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================================
+   OUR DIFFERENCE
+   ================================================ */
+#difference {
+  background-color: #f3f2ee;
+  padding: 96px 48px;
+}
+.dl-diff-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.dl-diff-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 28px 28px 32px;
+  border-left: 4px solid transparent;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+.dl-diff-card-yellow { border-left-color: #edb911; }
+.dl-diff-card-green  { border-left-color: #2d6d36; }
+.dl-diff-card-purple { border-left-color: #7B3BF5; }
+.dl-diff-card-h {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: #222;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.dl-diff-card-sub {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: #1d4ed8;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.dl-diff-card-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #8c8c8a;
+}
+
+@media (max-width: 1023px) {
+  .dl-diff-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  #difference { padding: 64px 20px; }
+  .dl-centered-header { text-align: left; }
+  .dl-centered-header .dl-section-subhead { margin-left: 0; margin-right: 0; }
+  .dl-diff-card {
+    border-left: none;
+    border-top: 4px solid transparent;
+    padding: 24px;
+  }
+  .dl-diff-card-yellow { border-top-color: #edb911; }
+  .dl-diff-card-green  { border-top-color: #2d6d36; }
+  .dl-diff-card-purple { border-top-color: #7B3BF5; }
+}
+
+/* ================================================
+   OUR PROCESS
+   ================================================ */
+#process {
+  background-color: #f3f2ee;
+  padding: 0 48px 96px;
+}
+#process .dl-centered-header {
+  padding-top: 96px;
+}
+.dl-proc-h2 {
+  font-weight: 800;
+}
+.dl-proc-h2 .dl-bold-last {
+  font-weight: 800;
+}
+.dl-proc-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.dl-proc-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+.dl-proc-num {
+  font-family: var(--font-overline);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.10em;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+}
+.dl-proc-card-h {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 19px;
+  color: #222;
+  margin-bottom: 12px;
+}
+.dl-proc-card-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #8c8c8a;
+}
+
+@media (max-width: 767px) {
+  #process { padding: 0 20px 64px; }
+  #process .dl-centered-header { padding-top: 48px; text-align: left; }
+  #process .dl-centered-header .dl-section-subhead { margin-left: 0; margin-right: 0; }
+  .dl-proc-cards { grid-template-columns: 1fr; }
+}
+
+/* ================================================
+   FAQ
+   ================================================ */
+#faq {
+  background-color: #f3f2ee;
+  padding: 96px 48px;
+}
+#faq .dl-section-headline {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.dl-faq-list {
+  border-top: 1px solid #e5e5e5;
+}
+.dl-faq-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+.dl-faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+  transition: color 0.2s;
+}
+.dl-faq-q:hover { color: var(--color-primary); }
+.dl-faq-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.dl-faq-icon::before,
+.dl-faq-icon::after {
+  content: '';
+  position: absolute;
+  background: #555;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.dl-faq-icon::before {
+  width: 14px; height: 2px;
+  top: 9px; left: 3px;
+}
+.dl-faq-icon::after {
+  width: 2px; height: 14px;
+  top: 3px; left: 9px;
+}
+.dl-faq-item.dl-open .dl-faq-icon::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+.dl-faq-a {
+  display: none;
+  padding: 0 48px 22px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: #8c8c8a;
+}
+.dl-faq-item.dl-open .dl-faq-a { display: block; }
+.dl-faq-a a { color: var(--color-primary); text-decoration: none; }
+.dl-faq-a a:hover { text-decoration: underline; }
+
+@media (max-width: 767px) {
+  #faq { padding: 64px 20px; }
+  #faq .dl-section-headline { text-align: center; }
+  .dl-faq-a { padding-right: 0; }
+}
+
+/* ================================================
+   FINAL CTA
+   ================================================ */
+#dl-cta {
+  background: #f3f2ee;
+  padding: 80px 48px;
+}
+.dl-cta-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 64px;
+}
+  
+  .dl-cta-card .dl-overline {
+  color: #bbbbbb;
+}
+  
+.dl-cta-card .dl-section-headline {
+  background: linear-gradient(160deg, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  max-width: 600px;
+}
+.dl-cta-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: #bbbbbb;
+  margin-bottom: 32px;
+  max-width: 560px;
+}
+.dl-cta-btn-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.dl-cta-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 32px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.dl-cta-btn:hover { background: var(--color-primary-hover); }
+.dl-cta-underline {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #8c8c8a;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  #dl-cta { padding: 64px 20px; }
+  .dl-cta-card { padding: 40px 24px; text-align: center; }
+  .dl-cta-btn { width: 100%; text-align: center; }
+  .dl-cta-btn-wrap { width: 100%; align-items: center; }
+}
+</style>
+
+<!-- ================================================ -->
+<!-- HTML                                             -->
+<!-- ================================================ -->
+<div class="dl-wrap">
+
+  <!-- HERO -->
+  <section id="dl-hero">
+    <div class="dl-hero-inner">
+      <div class="dl-hero-content">
+        <h1 class="dl-hero-h1">Home Improvement Leads Your Sales Team Will Love</h1>
+        <p class="dl-hero-subhead">
+          The moment homeowners submit our forms, we start nurturing them with content designed to warm them up to your company and move them closer to a decision.<br>
+          <strong class="dl-hero-result">The result: higher pick up rates, higher close rates, shorter sales cycles.</strong>
+        </p>
+        <div class="dl-hero-checks">
+          <div class="dl-checks-row">
+            <span class="dl-check-item"><span class="dl-check-mark">✓</span> Exclusive</span>
+            <span class="dl-check-item"><span class="dl-check-mark">✓</span> Nurtured</span>
+            <span class="dl-check-item"><span class="dl-check-mark">✓</span> Verified</span>
+          </div>
+          <div class="dl-checks-row">
+            <span class="dl-check-item"><span class="dl-check-mark">✓</span> Pay Per Lead</span>
+            <span class="dl-check-item"><span class="dl-check-mark">✓</span> No Long Term Commitment</span>
+          </div>
+        </div>
+        <button class="dl-hero-btn" onclick="dlOpenPopup()">Get a Proposal</button>
+      </div>
+      <div class="dl-hero-placeholder">Image coming soon</div>
+    </div>
+
+    <div class="dl-slider-section">
+      <p class="dl-slider-heading">Get your leads straight to <br class="mobile-break"><strong>your CRM in real time</strong></p>
+      <div class="dl-slider-outer">
+        <div class="dl-slider-track">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dc1109243d2cce10e4a.png" alt="Zoho">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e4b80b446d0fb910db7.png" alt="LeadPerfect">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dfd80b446d0fb90fd71.png" alt="Salesforce">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e3b2b7a6ecd79aa62d4.png" alt="ImproveIt">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0deb109243d2cce11760.png" alt="HubSpot">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e2180b446d0fb91063f.png" alt="Leap">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dab2b7a6ecd79aa4314.png" alt="Pipedrive">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dd8243975ecf7281859.png" alt="JobNimbus">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e1180b446d0fb9102ce.png" alt="MarketSharp">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0d8c109243d2cce1017f.png" alt="AccuLynx">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dc1109243d2cce10e4a.png" alt="Zoho">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e4b80b446d0fb910db7.png" alt="LeadPerfect">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dfd80b446d0fb90fd71.png" alt="Salesforce">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e3b2b7a6ecd79aa62d4.png" alt="ImproveIt">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0deb109243d2cce11760.png" alt="HubSpot">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e2180b446d0fb91063f.png" alt="Leap">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dab2b7a6ecd79aa4314.png" alt="Pipedrive">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0dd8243975ecf7281859.png" alt="JobNimbus">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0e1180b446d0fb9102ce.png" alt="MarketSharp">
+          <img src="https://assets.cdn.filesafe.space/RabPQprM9NSNNaG5WW2R/media/69df0d8c109243d2cce1017f.png" alt="AccuLynx">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR DIFFERENCE -->
+  <section id="difference">
+    <div class="dl-section-inner">
+      <div class="dl-centered-header">
+        <p class="dl-overline">OUR DIFFERENCE</p>
+        <h2 class="dl-section-headline">Scale Your Lead Volume<br>Without Compromising Quality</h2>
+        <p class="dl-section-subhead">Adding a lead vendor to your channel mix expands your pipeline beyond what your own campaigns can efficiently reach. The tradeoff is that vendor-sourced leads typically convert at a lower rate than your own. <strong>We close that gap by</strong> running a parallel nurture system on every lead that warms them to your company, builds familiarity, and guides their decision.</p>
+      </div>
+      <div class="dl-diff-cards">
+        <div class="dl-diff-card dl-diff-card-yellow">
+          <h3 class="dl-diff-card-h">Your Company Introduced Upon Form Submission</h3>
+          <p class="dl-diff-card-sub">→ Higher Pickup &amp; Recall Rate</p>
+          <p class="dl-diff-card-text">The moment a homeowner submits our form, they see a post-submission screen introducing your company, and your past work, while the lead hits your CRM in real time. Two things change as a result. Your team can call while the homeowner is still engaged in the topic rather than after their attention has moved on. And when the phone rings, the homeowner recognizes the company and expects the call, rather than treating it as a cold interruption.</p>
+        </div>
+        <div class="dl-diff-card dl-diff-card-green">
+          <h3 class="dl-diff-card-h">More Meaningful Touchpoints on Every Lead</h3>
+          <p class="dl-diff-card-sub">→ Higher Close Rate</p>
+          <p class="dl-diff-card-text">While your team works the lead, a parallel nurture sequence runs from our side with materials about your business, including your reviews, past work, and credentials. Homeowners evaluating contractors are making a trust decision with incomplete information, and every additional touchpoint that surfaces proof of your work and your reputation reduces that gap. By the time your sales conversation happens, the homeowner isn't still weighing whether your company is legitimate. They're ready to talk about scope and price.</p>
+        </div>
+        <div class="dl-diff-card dl-diff-card-purple">
+          <h3 class="dl-diff-card-h">Educational Content That Guides The Decision</h3>
+          <p class="dl-diff-card-sub">→ Shorter Sales Cycle</p>
+          <p class="dl-diff-card-text">Educational emails in our sequences include what to look for in a contractor, what questions to ask, and how to plan for a project. Most delays in home improvement decisions come from homeowners not knowing what they're looking for, what questions to ask or what's normal to pay. Reducing that uncertainty shortens the window between first contact and signed deal, and means fewer leads stall out in the middle of their own decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR PROCESS -->
+  <section id="process">
+    <div class="dl-section-inner">
+      <div class="dl-centered-header">
+        <p class="dl-overline">OUR PROCESS</p>
+        <h2 class="dl-section-headline dl-proc-h2">A Lead Journey That<br>Optimizes Your Objectives</span></h2>
+        <p class="dl-section-subhead">Most vendors design their lead process for their own business goals without much consideration to yours. From the moment a homeowner submits our form to the moment they make a decision, we engineered every step of our process to <strong>improve the metrics that matter to you.</strong></p>
+      </div>
+      <div class="dl-proc-cards">
+        <div class="dl-proc-card">
+          <p class="dl-proc-num">01 — LEAD GENERATION</p>
+          <p class="dl-proc-card-text">We run paid media through channels we own and operate. We're not an aggregator reselling leads purchased from third-party platforms. Every lead we send was generated through a campaign we built around your service and your market, which means you always know exactly where your leads came from and how they entered the funnel.</p>
+        </div>
+        <div class="dl-proc-card">
+          <p class="dl-proc-num">02 — POST SUBMISSION SCREEN</p>
+          <p class="dl-proc-card-text">Most homeowners submit a form and scroll away, and some forget they filled it out at all. Ours don't. The moment someone submits, we introduce your company by name and direct them to materials about your business on the landing page, so that by the time your sales rep calls, they know exactly who to expect.</p>
+        </div>
+        <div class="dl-proc-card">
+          <p class="dl-proc-num">03 — REAL TIME DELIVERY</p>
+          <p class="dl-proc-card-text">Leads are delivered to your CRM the instant they submit. No delays, no batching, no resale lag. Your team can follow up while the homeowner is still engaged in the topic, which dramatically increases your chances of making contact on the first attempt and booking the job on the first conversation.</p>
+        </div>
+        <div class="dl-proc-card">
+          <p class="dl-proc-num">04 — NURTURING SEQUENCES</p>
+          <p class="dl-proc-card-text">Every introduction is followed by an email sequence that keeps your company familiar and credible in the homeowner's mind. Your reviews, credentials, past work, and educational content about their project, all sent from us as the source that matched them with your company. A separate voice building confidence while your sales team works the lead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="dl-section-inner">
+      <h2 class="dl-section-headline">Frequently Asked Questions</h2>
+      <div class="dl-faq-list">
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            Do you work in my area and trade?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">We serve any home improvement and service vertical in the US.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            Where do your leads come from?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">We generate leads through paid advertising campaigns on Facebook and Instagram running under media properties we own and operate. Every lead comes through our own campaigns built specifically around your service and market. Not third-party platforms or aggregators.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            Where do you send the leads?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">Directly to your CRM, email, phone, or spreadsheet. However you prefer to receive them.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            How quickly do you deliver the leads?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">The moment a homeowner submits our form the lead is on its way to you. Delivery is real time. No batch sends or delays. Your team can call while the homeowner is still engaged with content about your company.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            How many companies do you send each lead to?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">One.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            What happens if a lead has bad contact information?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">We replace the lead if it comes through with invalid contact information.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            How long is the nurturing sequence?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">The sequence length is calibrated to the typical deal cycle in your service vertical. Generally it runs as a dense cadence in the first week when the lead is warmest and tapers off over the following weeks, with touchpoints at the one, two, and three month marks. The later touchpoints serve one of two purposes: reactivating leads that went quiet or collecting a review for you from homeowners who have already moved forward with your service.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            What does the nurturing sequence include?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">Every email is built around your company specifically. Your reviews, credentials, past work, and other materials or information you provide. They are sent from us as the source that matched the homeowner with your business, not from your company directly. The sequence is front-loaded with content that builds familiarity and confidence with your company early on. For later emails the focus shifts to checking in with homeowners who haven't moved forward yet and requesting a review from those who have. Before anything goes out we get your approval on the content and cadence.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            Can I approve the email content before it goes out?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">Yes. Before any sequence goes live we walk you through the content and cadence and get your sign-off. Nothing goes out without your approval.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            How much work will this require from my end?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">Less than you might expect. We handle the campaign setup, the sequence build, and the ongoing nurturing. What we need from you upfront is access to materials and information that help tell your company's story. Your reviews and testimonials, before and after photos, any relevant credentials or certifications. We will guide you through exactly what we need when we set up your campaign. Once you have approved the content and the sequence is live, there is nothing ongoing required from your team.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            How is this different from buying leads and running my own follow-up sequences?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">Your sequences reach the homeowner as the contractor trying to close a deal. Ours reach them as the source that made the introduction. That's two different senders with two different angles. That distinction matters because outreach that comes from a different direction with a different voice is more likely to actually get read than more of the same. The homeowner isn't hearing from your company again, they are hearing about your company from the source that matched them with you. That difference in angle is what keeps the additional touchpoints distinct and memorable rather than repetitive. That gives your company more legitimate opportunities to stay top of mind and move the needle on close rates.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            Is there a long term contract?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">No. You can cancel any time.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            How do I know this will work for my company?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">We don't have case studies to point to yet. We are early with this offer and we would rather be upfront about that than manufacture proof we don't have. The logic is sound though and the barrier to testing it is low. A homeowner who has engaged with content about your company at submission and continued to receive material about your business from a second sender spends significantly more time being educated about your company than one who hasn't. And that increases the likelihood of them purchasing from you. There is no long-term contract. You can evaluate the results with the first batch you purchase and decide from there. If the idea makes sense to you, that is all the commitment it takes to find out whether it works for your operation.</div>
+        </div>
+
+        <div class="dl-faq-item">
+          <button class="dl-faq-q" onclick="dlFaqToggle(this)">
+            What if I have more questions?
+            <span class="dl-faq-icon"></span>
+          </button>
+          <div class="dl-faq-a">You can email <a href="mailto:omer.caliskan@demandlinkhq.com">omer.caliskan@demandlinkhq.com</a> or text / call <a href="tel:9452153805">945-215-3805</a>.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="dl-cta">
+    <div class="dl-cta-card">
+      <p class="dl-overline">GET STARTED</p>
+      <h2 class="dl-section-headline">Strengthen Your Pipeline with DemandLink</h2>
+      <p class="dl-cta-text">
+        <strong>Try our leads</strong> alongside your other sources <strong>and judge them on the metrics that matter to you.</strong><br><br>
+        To get started, simply fill out our form by telling us the lead types you are looking for, the markets you serve, and the best way to reach you.<br><br>
+        We will get in touch with you to provide a proposal and address any further questions you might have.
+      </p>
+      <div class="dl-cta-btn-wrap">
+        <button class="dl-cta-btn" onclick="dlOpenPopup()">Get a Proposal</button>
+        <span class="dl-cta-underline">Pay Per Lead. No Long Term Commitment.</span>
+      </div>
+    </div>
+  </section>
+</div>
