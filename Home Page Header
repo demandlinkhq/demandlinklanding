@@ -1,0 +1,197 @@
+<style>
+/* ================================================
+   HEADER — Homepage Block
+   ================================================ */
+.dl-header-spacer { height: 70px; }
+
+#dl-header {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  width: 100% !important; z-index: 9999 !important;
+  background: #1A1A1A !important;
+  height: 70px; display: flex; align-items: center; padding: 0 48px;
+}
+.dl-header-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 100%;
+}
+.dl-logo {
+  font-family: var(--font-heading); font-weight: 800;
+  font-size: 20px; color: #fff; text-decoration: none;
+  letter-spacing: 0.06em; flex-shrink: 0;
+}
+.dl-nav { display: flex; gap: 36px; }
+.dl-nav a {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 15px; color: #bbbbbb; text-decoration: none; transition: color 0.2s;
+}
+.dl-nav a:hover { color: #fff; }
+.dl-header-right { display: flex; align-items: center; gap: 12px; }
+#dl-header-cta {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 14px; padding: 9px 20px;
+  border-radius: 6px; border: 1.5px solid #fff;
+  background: transparent; color: #fff;
+  cursor: pointer; white-space: nowrap;
+}
+#dl-header-cta:hover {
+  background: var(--color-primary-hover) !important;
+  border-color: var(--color-primary-hover) !important;
+}
+.dl-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.dl-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: #fff; border-radius: 2px;
+}
+.dl-mobile-menu {
+  display: none;
+  position: fixed !important; top: 70px !important;
+  left: 0 !important; right: 0 !important;
+  background: #1a1a1a; border-top: 1px solid #262626;
+  padding: 20px 24px; z-index: 9998 !important;
+  flex-direction: column; gap: 0;
+}
+.dl-mobile-menu.dl-open { display: flex; }
+.dl-mobile-menu a {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 16px; color: #bbbbbb; text-decoration: none;
+  padding: 14px 0; border-bottom: 1px solid #262626;
+}
+.dl-mobile-menu a:last-child { border-bottom: none; }
+
+@media (max-width: 767px) {
+  #dl-header { padding: 0 20px; }
+  .dl-nav { display: none; }
+  .dl-hamburger { display: flex; }
+}
+</style>
+
+<div class="dl-header-spacer"></div>
+
+<header id="dl-header">
+  <div class="dl-header-inner">
+    <a class="dl-logo" href="#">DemandLink</a>
+    <nav class="dl-nav">
+      <a href="#difference">Difference</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#dl-cta">Contact</a>
+    </nav>
+    <div class="dl-header-right">
+      <button id="dl-header-cta" onclick="dlOpenPopup()">Get a Proposal</button>
+      <button class="dl-hamburger" id="dl-hamburger" aria-label="Open menu" onclick="dlToggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="dl-mobile-menu" id="dl-mobile-menu">
+  <a href="#difference" onclick="dlCloseMenu()">Difference</a>
+  <a href="#process" onclick="dlCloseMenu()">Process</a>
+  <a href="#faq" onclick="dlCloseMenu()">FAQ</a>
+  <a href="#dl-cta" onclick="dlCloseMenu()">Contact</a>
+</div>
+
+<script>
+(function () {
+
+  var SCROLL_TRANSITION_START = 500;
+  var SCROLL_TRANSITION_END   = 800;
+  
+
+  if (window.location.hash) {
+    var _hashTarget = window.location.hash;
+    history.replaceState(null, '', window.location.pathname);
+    setTimeout(function () {
+      var el = document.querySelector(_hashTarget);
+      if (el) {
+        window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 70);
+      }
+    }, 50);
+  }
+
+
+  window.dlOpenPopup = function () {
+    var trigger = document.querySelector('.dl-popup-trigger');
+    if (trigger) trigger.click();
+  };
+
+  function updateHeaderBtn() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var btn = document.getElementById('dl-header-cta');
+    if (!btn) return;
+    var progress = Math.min(1, Math.max(0,
+      (scrollY - SCROLL_TRANSITION_START) /
+      (SCROLL_TRANSITION_END - SCROLL_TRANSITION_START)
+    ));
+    btn.style.backgroundColor = 'rgba(29,78,216,' + progress.toFixed(3) + ')';
+    var br = Math.round(255 + (29  - 255) * progress);
+    var bg = Math.round(255 + (78  - 255) * progress);
+    var bb = Math.round(255 + (216 - 255) * progress);
+    btn.style.borderColor = 'rgb(' + br + ',' + bg + ',' + bb + ')';
+  }
+
+  window.addEventListener('scroll', updateHeaderBtn, { passive: true });
+  updateHeaderBtn();
+
+  window.dlToggleMenu = function () {
+    var menu = document.getElementById('dl-mobile-menu');
+    if (menu) menu.classList.toggle('dl-open');
+  };
+
+  window.dlCloseMenu = function () {
+    var menu = document.getElementById('dl-mobile-menu');
+    if (menu) menu.classList.remove('dl-open');
+  };
+
+  document.addEventListener('click', function (e) {
+    var menu = document.getElementById('dl-mobile-menu');
+    var hamburger = document.getElementById('dl-hamburger');
+    if (
+      menu && menu.classList.contains('dl-open') &&
+      !menu.contains(e.target) &&
+      hamburger && !hamburger.contains(e.target)
+    ) {
+      menu.classList.remove('dl-open');
+    }
+  });
+
+    document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href]');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (!href) return;
+    var id;
+    if (href.startsWith('#')) {
+      id = href;
+    } else if (href.includes('#') && href.includes('demandlinkhq.com')) {
+      id = '#' + href.split('#')[1];
+    }
+    if (!id || id === '#') return;
+    var target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    history.replaceState(null, '', window.location.pathname);
+    var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+
+
+
+  window.dlFaqToggle = function (btn) {
+    var item   = btn.closest('.dl-faq-item');
+    var isOpen = item.classList.contains('dl-open');
+    document.querySelectorAll('.dl-faq-item.dl-open').forEach(function (el) {
+      el.classList.remove('dl-open');
+    });
+    if (!isOpen) {
+      item.classList.add('dl-open');
+    }
+  };
+
+})();
+</script>
