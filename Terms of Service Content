@@ -1,0 +1,117 @@
+<style>
+/* ================================================
+   RESETS & GLOBAL
+   ================================================ */
+.dl-wrap *, .dl-wrap *::before, .dl-wrap *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.dl-wrap { font-family: var(--font-body); }
+
+/* ================================================
+   PAGE CONTENT
+   ================================================ */
+#pp-page {
+  background-color: #f3f2ee;
+  padding: 60px 48px 80px;
+  min-height: calc(100vh - 70px);
+}
+.pp-container { max-width: 900px; margin: 0 auto; }
+.pp-card {
+  background: #fff; border-radius: 12px;
+  padding: 64px; box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+.pp-title {
+  font-family: var(--font-heading); font-weight: 800;
+  font-size: clamp(36px, 5vw, 52px);
+  color: #1a1a1a; line-height: 1.1; margin-bottom: 10px;
+}
+.pp-meta {
+  font-family: var(--font-body); font-size: 14px;
+  color: #8c8c8a; margin-bottom: 32px;
+  padding-bottom: 32px; border-bottom: 1px solid #e5e5e5;
+}
+.pp-body {
+  font-family: var(--font-body); font-size: 16px;
+  line-height: 1.8; color: #555; margin-bottom: 16px;
+}
+.pp-section-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 18px; color: #1a1a1a;
+  margin-top: 40px; margin-bottom: 12px;
+}
+.pp-list {
+  list-style: none; padding: 0; margin: 0 0 16px 0;
+}
+.pp-list li {
+  font-family: var(--font-body); font-size: 16px;
+  line-height: 1.8; color: #555;
+  padding: 3px 0 3px 20px; position: relative;
+}
+.pp-list li::before {
+  content: '·'; position: absolute; left: 4px;
+  color: #8c8c8a; font-size: 22px; line-height: 1.5;
+}
+.pp-list li strong { color: #333; }
+
+@media (max-width: 767px) {
+  #pp-page { padding: 40px 20px 64px; }
+  .pp-card { padding: 32px 20px; }
+}
+</style>
+
+<div class="dl-wrap">
+  <section id="pp-page">
+    <div class="pp-container">
+      <div class="pp-card">
+
+        <h1 class="pp-title">Terms of Service</h1>
+        <p class="pp-meta">Effective Date: 04/05/2026 &nbsp;|&nbsp; Last Updated: 04/05/2026</p>
+
+        <p class="pp-body">These Terms of Service ("Terms") govern your access to and use of the website located at demandlinkhq.com (the "Site") and any services provided by OFC Media Inc., operating under the trade name DemandLink ("Company," "we," "us," or "our").</p>
+        <p class="pp-body">By accessing or using the Site, or by engaging with our services, you agree to be bound by these Terms. If you do not agree, you should not use the Site or our services.</p>
+
+        <h2 class="pp-section-title">1. Use of the Site</h2>
+        <p class="pp-body">You may use the Site for lawful purposes only. You agree not to use the Site in any way that could damage, disable, or impair our services or interfere with any other party's use of the Site.</p>
+
+        <h2 class="pp-section-title">2. Services Overview</h2>
+        <p class="pp-body">DemandLink provides lead generation services to businesses. We generate and deliver leads through marketing campaigns operated by us and may facilitate delivery of those leads to clients via integrations, including CRM systems or other tools.</p>
+        <p class="pp-body">We do not guarantee any specific volume, performance, or outcome from the leads provided.</p>
+
+        <h2 class="pp-section-title">3. Lead Delivery and Accuracy</h2>
+        <p class="pp-body">We make reasonable efforts to provide accurate and relevant lead information. However, all leads are provided on an "as-is" basis.</p>
+        <p class="pp-body">If a lead contains clearly invalid or unusable information, we may, at our discretion, replace that lead. No other refunds, credits, or guarantees are provided.</p>
+
+        <h2 class="pp-section-title">4. Communications</h2>
+        <p class="pp-body">By submitting your information through the Site, you agree that we may contact you via email, phone, or SMS regarding your inquiry or our services, as described in our Privacy Policy.</p>
+
+        <h2 class="pp-section-title">5. Third-Party Services and Links</h2>
+        <p class="pp-body">Our Site and services may involve or link to third-party platforms, including CRM systems, advertising platforms, or other service providers. We are not responsible for the availability, accuracy, or practices of any third-party services.</p>
+
+        <h2 class="pp-section-title">6. Intellectual Property</h2>
+        <p class="pp-body">All content on the Site, including text, graphics, logos, and design, is the property of OFC Media Inc. or its licensors and is protected by applicable intellectual property laws. You may not copy, reproduce, or distribute any content from the Site without our prior written permission.</p>
+
+        <h2 class="pp-section-title">7. Disclaimer of Warranties</h2>
+        <p class="pp-body">The Site and all services are provided on an "as-is" and "as-available" basis. We make no warranties, express or implied, regarding the reliability, accuracy, or availability of the Site or the leads provided.</p>
+
+        <h2 class="pp-section-title">8. Limitation of Liability</h2>
+        <p class="pp-body">To the fullest extent permitted by law, OFC Media Inc. shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of the Site or our services.</p>
+
+        <h2 class="pp-section-title">9. Changes to These Terms</h2>
+        <p class="pp-body">We may update these Terms from time to time. We will revise the effective date at the top of this page. Your continued use of the Site or our services after any changes constitutes your acceptance of the updated Terms.</p>
+
+        <h2 class="pp-section-title">10. Governing Law</h2>
+        <p class="pp-body">These Terms shall be governed by and construed in accordance with the laws of the Province of Ontario and the laws of Canada applicable therein, without regard to conflict of law principles.</p>
+
+        <h2 class="pp-section-title">11. Contact Information</h2>
+        <p class="pp-body">If you have any questions about these Terms, please contact us at:</p>
+        <p class="pp-body">
+          OFC Media Inc. dba DemandLink<br>
+          1 Concord Cityplace Way, Toronto ON, M5V 0X3<br>
+          Email: <a href="mailto:contact@demandlinkhq.com" style="color:#1d4ed8;">contact@demandlinkhq.com</a><br>
+          Phone: <a href="tel:+19452153805" style="color:#1d4ed8;">+1 (945) 215-3805</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+</div>
