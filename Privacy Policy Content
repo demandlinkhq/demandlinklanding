@@ -1,0 +1,139 @@
+<style>
+/* ================================================
+   RESETS & GLOBAL
+   ================================================ */
+.dl-wrap *, .dl-wrap *::before, .dl-wrap *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.dl-wrap { font-family: var(--font-body); }
+
+/* ================================================
+   PAGE CONTENT
+   ================================================ */
+#pp-page {
+  background-color: #f3f2ee;
+  padding: 60px 48px 80px;
+  min-height: calc(100vh - 70px);
+}
+.pp-container { max-width: 900px; margin: 0 auto; }
+.pp-card {
+  background: #fff; border-radius: 12px;
+  padding: 64px; box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+.pp-title {
+  font-family: var(--font-heading); font-weight: 800;
+  font-size: clamp(36px, 5vw, 52px);
+  color: #1a1a1a; line-height: 1.1; margin-bottom: 10px;
+}
+.pp-meta {
+  font-family: var(--font-body); font-size: 14px;
+  color: #8c8c8a; margin-bottom: 32px;
+  padding-bottom: 32px; border-bottom: 1px solid #e5e5e5;
+}
+.pp-body {
+  font-family: var(--font-body); font-size: 16px;
+  line-height: 1.8; color: #555; margin-bottom: 16px;
+}
+.pp-section-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 18px; color: #1a1a1a;
+  margin-top: 40px; margin-bottom: 12px;
+}
+.pp-list {
+  list-style: none; padding: 0; margin: 0 0 16px 0;
+}
+.pp-list li {
+  font-family: var(--font-body); font-size: 16px;
+  line-height: 1.8; color: #555;
+  padding: 3px 0 3px 20px; position: relative;
+}
+.pp-list li::before {
+  content: '·'; position: absolute; left: 4px;
+  color: #8c8c8a; font-size: 22px; line-height: 1.5;
+}
+.pp-list li strong { color: #333; }
+
+@media (max-width: 767px) {
+  #pp-page { padding: 40px 20px 64px; }
+  .pp-card { padding: 32px 20px; }
+}
+</style>
+
+<div class="dl-wrap">
+  <section id="pp-page">
+    <div class="pp-container">
+      <div class="pp-card">
+
+        <h1 class="pp-title">Privacy Policy</h1>
+        <p class="pp-meta">Effective Date: 04/05/2026 &nbsp;|&nbsp; Last Updated: 04/05/2026</p>
+
+        <p class="pp-body">This Privacy Policy describes how OFC Media Inc., operating under the trade name DemandLink ("Company," "we," "us," or "our"), collects, uses, and shares information about you when you visit our website at demandlinkhq.com (the "Site") or otherwise interact with us.</p>
+        <p class="pp-body">By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
+
+        <h2 class="pp-section-title">1. Who We Are</h2>
+        <p class="pp-body">DemandLink is a trade name operated by OFC Media Inc. References to "DemandLink," "we," "us," or "our" throughout this policy refer to OFC Media Inc. and its operations under the DemandLink brand.</p>
+
+        <h2 class="pp-section-title">2. Information We Collect</h2>
+        <p class="pp-body">We collect information you provide directly to us, including when you:</p>
+        <ul class="pp-list">
+          <li>Fill out a contact or inquiry form on our Site</li>
+          <li>Communicate with us by email, phone, or other means</li>
+          <li>Subscribe to any communications from us</li>
+        </ul>
+        <p class="pp-body">The types of information we may collect include your name, business name, email address, phone number, and any other information you choose to provide.</p>
+        <p class="pp-body">We also collect certain information automatically when you visit our Site, including your IP address, browser type, operating system, referring URLs, and pages viewed. This information is collected through standard server logs and technologies such as cookies.</p>
+
+        <h2 class="pp-section-title">3. How We Use Your Information</h2>
+        <p class="pp-body">We use the information we collect to:</p>
+        <ul class="pp-list">
+          <li>Respond to your inquiries and communicate with you about our services</li>
+          <li>Contact you by phone or email regarding your inquiry or application</li>
+          <li>Send you information about our services that may be relevant to your business</li>
+          <li>Improve and optimize our Site and services</li>
+          <li>Comply with applicable legal obligations</li>
+        </ul>
+
+        <h2 class="pp-section-title">4. SMS and Telephone Communications</h2>
+        <p class="pp-body">If you provide your phone number through our Site, you may receive calls or SMS messages from us related to your inquiry. Message and data rates may apply. You may opt out of SMS communications at any time by replying STOP to any message we send. For help, reply HELP.</p>
+        <p class="pp-body">We do not share your phone number with third parties for their own marketing purposes.</p>
+
+        <h2 class="pp-section-title">5. How We Share Your Information</h2>
+        <p class="pp-body">We do not sell your personal information. We may share your information in the following limited circumstances:</p>
+        <ul class="pp-list">
+          <li><strong>Service providers:</strong> We may share information with third-party vendors who assist us in operating our Site and conducting our business, such as hosting providers and CRM software providers. These parties are contractually obligated to keep your information confidential and use it only for the purposes for which it was disclosed.</li>
+          <li><strong>Legal requirements:</strong> We may disclose your information if required to do so by law or in response to valid requests by public authorities.</li>
+          <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.</li>
+        </ul>
+
+        <h2 class="pp-section-title">6. Cookies and Tracking Technologies</h2>
+        <p class="pp-body">Our Site uses cookies and similar tracking technologies to enhance your experience, analyze Site traffic, and for advertising purposes. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, some features of our Site may not function properly without cookies.</p>
+        <p class="pp-body">We may use third-party advertising platforms, including Meta (Facebook) and Google, which may place cookies on your browser to deliver targeted advertising. You can opt out of interest-based advertising through your account settings on those platforms or through industry opt-out tools such as the Digital Advertising Alliance at optout.aboutads.info.</p>
+
+        <h2 class="pp-section-title">7. Data Retention</h2>
+        <p class="pp-body">We retain your information for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements.</p>
+
+        <h2 class="pp-section-title">8. Your Rights and Choices</h2>
+        <p class="pp-body">Depending on your location, you may have certain rights regarding your personal information, including the right to access, correct, or delete the information we hold about you. To exercise any of these rights, please contact us using the information below.</p>
+
+        <h2 class="pp-section-title">9. Children's Privacy</h2>
+        <p class="pp-body">Our Site is not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us and we will take steps to delete it.</p>
+
+        <h2 class="pp-section-title">10. Third-Party Links</h2>
+        <p class="pp-body">Our Site may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites and encourage you to review the privacy policies of any third-party sites you visit.</p>
+
+        <h2 class="pp-section-title">11. Changes to This Policy</h2>
+        <p class="pp-body">We may update this Privacy Policy from time to time. We will notify you of any material changes by updating the effective date at the top of this page. Your continued use of the Site after any changes constitutes your acceptance of the updated policy.</p>
+
+        <h2 class="pp-section-title">12. Contact Us</h2>
+        <p class="pp-body">If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
+        <p class="pp-body">
+          OFC Media Inc. dba DemandLink<br>
+          1 Concord Cityplace Way, Toronto ON, M5V 0X3<br>
+          Email: <a href="mailto:contact@demandlinkhq.com" style="color:#1d4ed8;">contact@demandlinkhq.com</a><br>
+          Phone: <a href="tel:+19452153805" style="color:#1d4ed8;">+1 (945) 215-3805</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+</div>
